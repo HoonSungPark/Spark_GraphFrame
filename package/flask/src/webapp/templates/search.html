@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Select the search keywords
+    </title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+<form method="GET" action="{{url_for('test_graph_search')}}" target="frame1">
+   
+  <div style="float:left; width:700px; height:50px">
+    <span><h4>첫번째 검색 키워드: <select name="graph_keyword1">
+	       {% for item in search_keyword %}
+		{% if item == '개인정보 보호법' %}
+                          <option selected value='{{item}}'>{{item}}</option>
+		{% else  %}
+                        <option value='{{item}}'>{{item}}</option>
+  		{% endif %}
+                    {% endfor %}   
+    </select></h4></span></div>
+ <div style="float:left; width:200px; height:50px">
+    <span><h4>노드 수: <select name="node_number">
+               {% for item in node_number %}
+                {% if item == 9 %}
+                          <option selected value={{item}}>{{item}}</option>
+                {% else  %}
+                        <option value={{item}}>{{item}}</option>
+                {% endif %}
+                    {% endfor %}
+    </select></h4></span></div>
+<div style="clear:both;"></div>
+    <div style="float:left; width:700px; height:50px">
+    <span><h4>두번째 검색 키워드: <select name="graph_keyword2">
+               {% for item in search_keyword %}
+                {% if item == '개인정보 보호법' %}
+                          <option selected value='{{item}}'>{{item}}</option>
+                {% else  %}
+                        <option value='{{item}}'>{{item}}</option>
+                {% endif %}
+                    {% endfor %}
+    </select></h4></span></div>
+ <div style="float:left; width:200px; height:50px">
+    <span><h4>노드 수: <select name="node_number2">
+               {% for item in node_number %}
+                {% if item == 4 %}
+                          <option selected value={{item}}>{{item}}</option>
+                {% else  %}
+                        <option value={{item}}>{{item}}</option>
+                {% endif %}
+                    {% endfor %}
+    </select></h4></span></div>
+<div style="clear:both;"></div>
+
+
+    <div style="float:left; width:200px; height:50px">
+            <button type="submit" "go()">그래프 결과값 보기 </button><label>
+     </div>
+<div style="clear:both;"></div>
+</form>
+
+<div style="width:900px; height:900px">
+{% if start == 1 %}
+<iframe src = "" name='frame1' width = "900" height = "900" ></iframe>
+{% else  %}
+<iframe src = "{{url_for('test_graph_search')}}" name='frame1' width = "900" height = "900" ></iframe>
+{% endif %}
+</div>
+
+</body>
+</html>
